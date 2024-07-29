@@ -286,9 +286,7 @@ impl<
         &mut self,
         sender: &mut Sender<'a, CriticalSectionRawMutex, KeyboardReportMessage, 8>,
     ) {
-        #[cfg(feature = "async_matrix")]
-        self.matrix.wait_for_key().await;
-
+        /*
         // Matrix scan
         self.matrix.scan().await;
 
@@ -333,6 +331,7 @@ impl<
                 }
             }
         }
+        */
     }
 
     /// Process key changes at (row, col)
@@ -498,7 +497,7 @@ impl<
     ///
     /// 2. `key_state.changed` is false, and `key_state.pressed` is true,
     ///     which means that the key is held. The duration time should to be checked.
-    ///     
+    ///
     /// TODO: make tap/hold threshold customizable
     async fn process_key_action_tap_hold(
         &mut self,

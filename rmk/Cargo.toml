@@ -19,20 +19,20 @@ embedded-hal-async = { version = "1.0.0", features = [
 ], optional = true }
 embedded-storage = "0.3"
 embedded-storage-async = "0.4"
-embassy-embedded-hal = { version = "0.1" }
-embassy-time = { version = "0.3", features = ["defmt"] }
-embassy-usb = { version = "0.2", features = [
+embassy-embedded-hal = { verison = "0.1.0", path = "../../embassy/embassy-embedded-hal" }
+embassy-time = { path = "../../embassy/embassy-time", features = ["defmt"] }
+embassy-usb = { path = "../../embassy/embassy-usb", features = [
     "defmt",
     "usbd-hid",
     "max-interface-count-8",
     "max-handler-count-8",
 ] }
 heapless = "0.8.0"
-embassy-sync = { version = "0.6", features = ["defmt"] }
-embassy-futures = { version = "0.1", features = ["defmt"] }
-embassy-executor = { version = "0.5", features = ["defmt"] }
+embassy-sync = { version = "0.6", features = ["defmt"], path = "../../embassy/embassy-sync" }
+embassy-futures = { version = "0.1", features = ["defmt"], path = "../../embassy/embassy-futures" }
+embassy-executor = { features = ["defmt"], path = "../../embassy/embassy-executor"  }
 
-usbd-hid = { version = "0.7.1", features = ["defmt"] }
+usbd-hid = { version = "0.8.1", features = ["defmt"] }
 ssmarshal = { version = "1.0", default-features = false }
 defmt = "0.3"
 static_cell = "2"
@@ -79,7 +79,7 @@ async_matrix = ["dep:embedded-hal-async"]
 rapid_debouncer = []
 
 #! ### BLE feature flags
-#! 
+#!
 #! ⚠️ Due to the limitation of docs.rs, functions gated by BLE features won't show in docs.rs. You have to head to [`examples`](https://github.com/HaoboGu/rmk/tree/main/examples) folder of RMK repo for their usages.
 ## Enable feature if you want to use nRF52840 with BLE.
 nrf52840_ble = ["_nrf_ble", "nrf-softdevice/nrf52840", "nrf-softdevice/s140"]
